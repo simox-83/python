@@ -79,3 +79,30 @@ user.read_login_attempts()
 
 
 
+class Car(object):    #inheritance: parent class
+	def __init__(self,make,model,year):
+		self.make=make
+		self.model=model
+		self.year= year
+
+	def get_descriptive_name(self):
+		print ("Car name is "+ self.make +" and model is "+ self.model +" and year is " +str(self.year))
+
+
+class ElectricCar(Car):    #inheritance: child class
+	def __init__(self,make,model,year):
+		super(ElectricCar,self).__init__(make,model,year)
+		self.battery=Battery()                   # using instances as attributes
+
+
+class Battery():
+	def __init__(self,battery_size=70):
+		self.battery_size=battery_size
+
+	def describe_battery(self):
+		print ("This battery has " +str(self.battery_size) + "kWh" )
+
+
+mycar=ElectricCar('tesla','model s', 2016)
+print (mycar.get_descriptive_name())
+mycar.battery.describe_battery()
