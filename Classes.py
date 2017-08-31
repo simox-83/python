@@ -13,7 +13,7 @@ print mydog.name, mydog.age
 mydog.sit()
 
 
-class Restaurant ():
+class Restaurant (object):
 	def __init__(self, name, cuisine):
 		self.name=name
 		self.cuisine=cuisine
@@ -32,6 +32,16 @@ class Restaurant ():
 	def increment_number_served (self,n):
 		return self.number_served+n
 
+class IceCreamStand (Restaurant):
+	def __init__ (self,name,cuisine,flavour):
+		super(IceCreamStand,self).__init__(name,cuisine)
+		self.flavour=flavour
+
+	def display_flavour(self):
+		print ("The flavours are " + str(self.flavour))
+
+
+
 
 restaurant=Restaurant ('giallorossa', 'italian')
 print restaurant.name
@@ -40,6 +50,9 @@ restaurant.describe_restaurant()
 restaurant.open_restaurant()
 print restaurant.set_number_served(10)
 print restaurant.increment_number_served(5)
+gelateria=IceCreamStand('lory','gelateria',['nocciola','banana','vaniglia'])
+gelateria.display_flavour()
+
 
 
 class User ():
@@ -86,11 +99,18 @@ class Car(object):    #inheritance: parent class
 	def get_descriptive_name(self):
 		print ("Car name is "+ self.make +" and model is "+ self.model +" and year is " +str(self.year))
 
+	def fill_gas_tank(self):
+		print ("Fuel loaded")
+
 
 class ElectricCar(Car):    #inheritance: child class
 	def __init__(self,make,model,year):
 		super(ElectricCar,self).__init__(make,model,year)
 		self.battery=Battery()                   # using instances as attributes
+
+
+	def fill_gas_tank (self):
+		print ("It's electric, no gas")
 
 
 class Battery():
@@ -101,8 +121,13 @@ class Battery():
 		print ("This battery has " +str(self.battery_size) + "kWh" )
 
 
+
+oldcar=Car ('Fiat', '500', '1978')
 mycar=ElectricCar('tesla','model s', 2016)
 print (mycar.get_descriptive_name())
+print (oldcar.get_descriptive_name())
 mycar.battery.describe_battery()
+mycar.fill_gas_tank()
+oldcar.fill_gas_tank()
 
 
