@@ -77,8 +77,6 @@ user.reset_login_attempts()
 user.read_login_attempts()
 
 
-
-
 class Car(object):    #inheritance: parent class
 	def __init__(self,make,model,year):
 		self.make=make
@@ -106,3 +104,5 @@ class Battery():
 mycar=ElectricCar('tesla','model s', 2016)
 print (mycar.get_descriptive_name())
 mycar.battery.describe_battery()
+
+
